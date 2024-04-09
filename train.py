@@ -76,11 +76,14 @@ def main():
     # os.environ["NCCL_BLOCKING_WAIT"] = "1"
 
     # set before init_distributed_mode() to ensure the same job_id shared across all ranks.
+    print("Running train.py")
+    print('testing')
+    
     job_id = now()
 
     cfg = Config(parse_args())
 
-    init_distributed_mode(cfg.run_cfg)
+    # init_distributed_mode(cfg.run_cfg)
 
     setup_seeds(cfg)
 
@@ -96,7 +99,7 @@ def main():
     runner = get_runner_class(cfg)(
         cfg=cfg, job_id=job_id, task=task, model=model, datasets=datasets
     )
-    runner.train()
+    #runner.train()
 
 
 if __name__ == "__main__":
