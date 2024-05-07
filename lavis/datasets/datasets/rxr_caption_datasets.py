@@ -1,6 +1,7 @@
 import os
 from collections import OrderedDict
 from lavis.datasets.datasets.base_dataset import BaseDataset
+from lavis.datasets.datasets.caption_datasets import CaptionDataset, CaptionInstructDataset, CaptionEvalDataset
 from PIL import Image
 
 class __DisplMixin:

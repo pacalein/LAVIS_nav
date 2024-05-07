@@ -1,12 +1,12 @@
-from lavis.datasets.builders.base_dataset_builder import base_dataset_builder
+from lavis.datasets.builders.base_dataset_builder import BaseDatasetBuilder
 from lavis.common.registry import registry
-from lavis.dataset.datasets import (
+from lavis.datasets.datasets.rxr_caption_datasets import (
     RXRCaptionDataset,
     RXRCaptionEvalDataset,
     RXRCaptionInstructDataset
 )
 
-@registry.register_builder("rxr")
+@registry.register_builder("rxr_caption")
 class RXRCaptionBuilder(BaseDatasetBuilder):
     train_dataset_cls = RXRCaptionDataset
     '''
