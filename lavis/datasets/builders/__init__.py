@@ -4,7 +4,6 @@
  SPDX-License-Identifier: BSD-3-Clause
  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 """
-
 from lavis.datasets.builders.base_dataset_builder import load_dataset_config
 from lavis.datasets.builders.caption_builder import (
     COCOCapBuilder,
@@ -122,6 +121,9 @@ from lavis.datasets.builders.text_to_image_generation_builder import BlipDiffusi
 
 from lavis.datasets.builders.discrn_builders import DiscrnImagePcBuilder, DiscrnAudioVideoBuilder
 
+# new RXR
+from lavis.datasets.builders.rxr_caption_builder import RXRCaptionBuilder
+
 from lavis.common.registry import registry
 
 __all__ = [
@@ -222,8 +224,10 @@ __all__ = [
 
     # DisCRN
     "DiscrnImagePcBuilder",
-    "DiscrnAudioVideoBuilder"
+    "DiscrnAudioVideoBuilder",
 
+    # RXR
+    "RXRCaptionBuilder"
 ]
 
 

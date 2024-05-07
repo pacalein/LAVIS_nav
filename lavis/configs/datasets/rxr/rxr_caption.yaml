@@ -1,0 +1,19 @@
+datasets:
+  rxr_caption: # name of the dataset builder
+    dataset_card: dataset_card/rxr_caption.md # path to the dataset card 
+    data_type: images # [images|videos|features] we use features in this case for extracted video features 
+
+    build_info:
+      # Be careful not to append minus sign (-) before split to avoid itemizing
+      annotations:
+        train:
+          url: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_train.json
+          storage: rxr/LandmarkRxR_train.json
+        val:
+          url: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_val_seen.json
+          storage: rxr/LandmarkRxR_val_seen.json
+        test:
+          url: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_val_unseen.json
+          storage: rxr/LandmarkRxR_val_unseen.json
+      images:
+        storage: /home/fpcattan/nas2_grima/datasets/ # donde van a estar las imagenes?
