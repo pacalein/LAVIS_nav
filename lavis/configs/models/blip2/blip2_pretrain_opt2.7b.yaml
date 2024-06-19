@@ -6,8 +6,9 @@
 model:
   arch: pretrain_opt2.7b
   load_finetuned: False
-
-  pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_opt2.7b.pth"
+  # pretrained: "/workspace1/fpcattan/output/20240515195/checkpoint_0.pth"
+  pretrained: "/mnt/nas2/GrimaRepo/fpcattan/blip2/models/blip2_pretrained_opt2.7b.pth"
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_opt2.7b.pth"
   finetuned: ""
 
   # vit encoder

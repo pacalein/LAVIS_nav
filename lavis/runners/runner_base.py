@@ -374,7 +374,7 @@ class RunnerBase:
         for cur_epoch in range(self.start_epoch, self.max_epoch):
             # training phase
             if not self.evaluate_only:
-                logging.info("Start training")
+                logging.info("Start training stage")
                 # See https://github.com/salesforce/LAVIS/issues/449
                 # if cur_epoch == self.start_epoch:
                 #     self.task.before_training(
@@ -384,6 +384,8 @@ class RunnerBase:
                 train_stats = self.train_epoch(cur_epoch)
                 self.log_stats(split_name="train", stats=train_stats)
 
+            logging.info("End training stage")
+            
             # evaluation phase
             if len(self.valid_splits) > 0 and (self.evaluate_only or cur_epoch%self.val_freq == 0):
                 for split_name in self.valid_splits:
@@ -419,6 +421,7 @@ class RunnerBase:
             if self.save_freq>0 and cur_epoch%self.save_freq == 0:
                 self._save_checkpoint(cur_epoch, is_best=False)
 
+            # TODO: aqui se cae cuando entreno con 1 gpu sin distributed
             dist.barrier()
 
         # save last checkpoint

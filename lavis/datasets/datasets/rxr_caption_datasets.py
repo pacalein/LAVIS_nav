@@ -66,8 +66,7 @@ class RXRCaptionEvalDataset(BaseDataset, __DisplMixin):
             "instance_id": ann["instance_id"],
         }
 
-# TODO: ver si me sirve esto realmente
-class RXRCaptionInstructDataset(CaptionDataset):
+class RXRCaptionInstructDataset(RXRCaptionDataset):
     def __getitem__(self, index):
         data = super().__getitem__(index)
         if data != None:

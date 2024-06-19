@@ -8,7 +8,8 @@ from lavis.datasets.datasets.rxr_caption_datasets import (
 
 @registry.register_builder("rxr_caption")
 class RXRCaptionBuilder(BaseDatasetBuilder):
-    train_dataset_cls = RXRCaptionDataset
+    # train_dataset_cls = RXRCaptionDataset
+    train_dataset_cls = RXRCaptionInstructDataset
     '''
     In captioning tasks, during test time, each data sample often 
     includes multiple ground-truth captions rather than just a single 

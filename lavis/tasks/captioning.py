@@ -94,6 +94,8 @@ class CaptionTask(BaseTask):
             if 'coco' not in val_ds_name: # coco is already precomputed in dataset
                 self.annotation_file = os.path.join(registry.get_path("cache_root"),f'{val_ds_name}_gt', f'{val_ds_name}_{self.split}_annotations.json')
                 if get_rank() == 0:
+                    print('RAISE:',os.path.join(registry.get_path("cache_root"),f'{val_ds_name}_gt'))
+                    print('REGISTRY',registry.get_path("cache_root"))
                     os.makedirs(os.path.join(registry.get_path("cache_root"),f'{val_ds_name}_gt'), exist_ok=True)
                     convert_to_coco_gt(datasets[val_ds_name], self.annotation_file, self.caption_key, self.sample_id_key, self.split, load_gt_from_file=self.load_gt_from_file, img_ids=self.img_ids)
         return datasets

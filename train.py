@@ -70,6 +70,14 @@ def get_runner_class(cfg):
 
     return runner_cls
 
+def print_gpu():
+    if torch.cuda.is_available():
+        device_count = torch.cuda.device_count()
+        print(f"Number of available GPUs: {device_count}")
+        for i in range(device_count):
+            print(f"GPU {i}: {torch.cuda.get_device_name(i)}")
+    else:
+        print("No GPUs available. Running on CPU.")
 
 def main():
     # allow auto-dl completes on main process without timeout when using NCCL backend.
@@ -77,13 +85,19 @@ def main():
 
     # set before init_distributed_mode() to ensure the same job_id shared across all ranks.
     print("Running train.py")
-    print('testing')
+    
+    print_gpu()
     
     job_id = now()
 
     cfg = Config(parse_args())
 
-    # init_distributed_mode(cfg.run_cfg)
+    # esto estaba comentado no se por que
+    init_distributed_mode(cfg.run_cfg)
+    
+    # linea 92 de runner_base se cae aqui, no existe la key
+    # pero al arreglar lo de arriba solo imprime [0]
+    print([cfg.run_cfg.gpu])
 
     setup_seeds(cfg)
 
@@ -93,13 +107,26 @@ def main():
     cfg.pretty_print()
 
     task = tasks.setup_task(cfg)
-    datasets = task.build_datasets(cfg)
+    # datasets = task.build_datasets(cfg)
     model = task.build_model(cfg)
+    
+    # BORRAR ESTOS PRINTS
+    # Check if Vision Transformer is frozen
+    vision_frozen = all(param.requires_grad is False for param in model.visual_encoder.parameters())
 
+    # Check if T5 LLM is frozen
+    t5_frozen = all(param.requires_grad is False for param in model.t5_model.parameters())
+
+    print(f"Vision Transformer frozen: {vision_frozen}")
+    print(f"T5 LLM frozen: {t5_frozen}")
+    
+    # DESCOMENTAR
+    '''
     runner = get_runner_class(cfg)(
         cfg=cfg, job_id=job_id, task=task, model=model, datasets=datasets
     )
-    #runner.train()
+    runner.train()
+    '''
 
 
 if __name__ == "__main__":

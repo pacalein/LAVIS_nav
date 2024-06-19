@@ -7,13 +7,13 @@ datasets:
       # Be careful not to append minus sign (-) before split to avoid itemizing
       annotations:
         train:
-          url: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/filtered_LandmarkRxR_train.json
-          storage: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/filtered_LandmarkRxR_train.json
+          url: /workspace1/fpcattan/Landmark-RxR/filtered_LandmarkRxR_train.json
+          storage: /workspace1/fpcattan/Landmark-RxR/filtered_LandmarkRxR_train.json
         val:
-          url: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_val_seen.json
-          storage: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_val_seen.json
+          url: /workspace1/fpcattan/Landmark-RxR/filtered_LandmarkRxR_val.json
+          storage: /workspace1/fpcattan/Landmark-RxR/filtered_LandmarkRxR_val.json
         test:
-          url: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_val_unseen.json
-          storage: /home/fpcattan/nas2_grima/datasets/Landmark-RxR/LandmarkRxR_val_unseen.json
+          url: /workspace1/fpcattan/Landmark-RxR/filtered_LandmarkRxR_test.json
+          storage: /workspace1/fpcattan/Landmark-RxR/filtered_LandmarkRxR_test.json
       images:
-        storage: /mnt/ialabnas2/homes/jdiazram/Matterport3D/v1/scans/ # donde van a estar las imagenes?
+        storage: /workspace1/fpcattan/Matterport3D/ # path a las imagenes

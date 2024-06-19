@@ -97,9 +97,11 @@ class BaseModel(nn.Module):
             load_pretrained = cfg.get("load_pretrained", True)
             if load_pretrained:
                 # load pre-trained weights
+                logging.info("load from pretrained")
                 pretrain_path = cfg.get("pretrained", None)
                 assert "Found load_finetuned is False, but pretrain_path is None."
                 self.load_from_pretrained(url_or_filename=pretrain_path, **kwargs)
+                logging.info("loaded from pretrained")
 
     def before_training(self, **kwargs):
         pass
